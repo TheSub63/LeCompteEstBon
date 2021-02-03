@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #ifndef GLOBALS
 #define GLOBALS
@@ -12,6 +13,7 @@ extern int meilleurcalcul;
 
 void affichesolution(int l);
 void compte(int l);
+void resetSolution();
 
 typedef struct
 {

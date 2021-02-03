@@ -3,7 +3,7 @@
 long * genNumbers(int n)
 {
     init_genrand(7);
-    long * numbers = (long *) malloc (n+1);
+    long * numbers = (long *) malloc (sizeof(long) * n);
     if(numbers==NULL) exit(1);
     for(int i=0;i<n;i++) {
 

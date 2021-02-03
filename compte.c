@@ -10,6 +10,17 @@ void affichesolution(int calcul)
   printf("******************\n");
 }
 
+void resetSolution()
+{
+  resultat = 0;
+  meilleurecart = 0;
+  meilleurcalcul = 0;
+  
+  solution s;
+  savesolution = s;
+  bestsolution = s;
+}
+
 void compte(int calcul)
 {
   int i,j,k,n;

@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
   affichesolution(meilleurcalcul);
 
 	free(termeini);
+  resetSolution();
 
 	return(0);
 }
