@@ -10,7 +10,7 @@ void affichesolution(int calcul)
   printf("******************\n");
 }
 
-void compte(int calcul)
+void compte(int calcul, long resultat, long *meilleurecart, int *meilleurcalcul)
 {
   int i,j,k,n;
   long terme1=0,terme2=0;
@@ -19,20 +19,20 @@ void compte(int calcul)
   ecart=resultat-terme[calcul][0];
   if(ecart<0)
     ecart=-ecart;
-  if(ecart<=meilleurecart)
+  if(ecart<=*meilleurecart)
   {
-    if(ecart<meilleurecart)
+    if(ecart<*meilleurecart)
     {
-      meilleurecart=ecart;
+      *meilleurecart=ecart;
       bestsolution=savesolution;
-      meilleurcalcul=calcul;
+      *meilleurcalcul=calcul;
     }
-    else  // (ecart==meilleurecart)
+    else  // (ecart==*meilleurecart)
     {
-      if(calcul>meilleurcalcul)
+      if(calcul>*meilleurcalcul)
       {
         bestsolution=savesolution;
-        meilleurcalcul=calcul;
+        *meilleurcalcul=calcul;
       }
     }
   }
@@ -63,14 +63,14 @@ void compte(int calcul)
       savesolution.operation[calcul]='+';
       savesolution.valeur2[calcul]=terme2;
       savesolution.resultat[calcul]=terme[calcul-1][0];
-      compte(calcul-1);
+      compte(calcul-1, resultat, meilleurecart, meilleurcalcul);
       _Bool check = (terme1!=1 && terme2!=1);
       if(check)
       {
         terme[calcul-1][0]=terme1*terme2;
         savesolution.operation[calcul]='*';
         savesolution.resultat[calcul]=terme[calcul-1][0];
-        compte(calcul-1);
+        compte(calcul-1, resultat, meilleurecart, meilleurcalcul);
 		     		  
 				if(terme1>=terme2)
 				{
@@ -79,7 +79,7 @@ void compte(int calcul)
 					{
 						savesolution.operation[calcul]='-';
 				    savesolution.resultat[calcul]=terme[calcul-1][0];
-						compte(calcul-1);
+						compte(calcul-1, resultat, meilleurecart, meilleurcalcul);
 					}
 					r=terme1%terme2;
 					if(!r)
@@ -87,7 +87,7 @@ void compte(int calcul)
 	                terme[calcul-1][0]=terme1/terme2;
 				    savesolution.operation[calcul]='/';
 						savesolution.resultat[calcul]=terme[calcul-1][0];
-						compte(calcul-1);
+						compte(calcul-1, resultat, meilleurecart, meilleurcalcul);
 					}
 				}
 				else
@@ -97,7 +97,7 @@ void compte(int calcul)
 					savesolution.operation[calcul]='-';
 					savesolution.valeur2[calcul]=terme1;
 					savesolution.resultat[calcul]=terme[calcul-1][0];
-					compte(calcul-1);
+					compte(calcul-1, resultat, meilleurecart, meilleurcalcul);
 					r=terme2%terme1;
 
 					if(!r)
@@ -105,7 +105,7 @@ void compte(int calcul)
 	                    terme[calcul-1][0]=terme2/terme1;
 						savesolution.operation[calcul]='/';
 						savesolution.resultat[calcul]=terme[calcul-1][0];
-						compte(calcul-1);
+						compte(calcul-1, resultat, meilleurecart, meilleurcalcul);
 					}
 				}
 			}
@@ -116,7 +116,7 @@ void compte(int calcul)
         {
           savesolution.operation[calcul]='-';
           savesolution.resultat[calcul]=terme[calcul-1][0];
-          compte(calcul-1);
+          compte(calcul-1, resultat, meilleurecart, meilleurcalcul);
         }
       }
       else
@@ -126,7 +126,7 @@ void compte(int calcul)
         savesolution.operation[calcul]='-';
         savesolution.valeur2[calcul]=terme1;
         savesolution.resultat[calcul]=terme[calcul-1][0];
-        compte(calcul-1);
+        compte(calcul-1, resultat, meilleurecart, meilleurcalcul);
       }
     }
   }

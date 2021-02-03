@@ -45,3 +45,16 @@ J'ai modifié le code pour pouvoir ajouté un bug, mais celui-ci n'a pas été a
 
 Pour les tests unitaires, je choisi d'utiliser la biblithèque utilisée pour les TP de C de première année (teZZt) écrite M. Yon et M. Bachelet. Elle a l'avantage d'étre très légère et facile à intégrer, puisqu'elle est contenue dans un simple `.h`. Je récupère ce `.h` depuis le répertoire git d'un TP de C de ZZ1.
 
+Le programme fut très compliqué à comprendre, il y a beaucoup de variables globales qui sont définies dans des endroits différents. Par exemple la fonction `calcul`, qui est la plus grosse fonction ne prenait qu'un seul argument, et lit toutes les autres informations à partir des variables. J'ai ajouté des paramètres à cette fonction pour pouvoir y voir plus clair mais il y a encore des variables à l'intérieur qui sont définies dans `compte.h` et modifiées dans la fonction, puis lues dans la fonction main.
+
+Pour les premiers test je vais ajouter un calcul "impossible", à savoir trouver un résultat entier positif en lui donnant que des 0 pour calculer le nombre.
+J'obtiens une erreur à l'exécution, peut-être à cause d'une division par zéro :
+
+```
+Floating point exception (core dumped)
+```
+
+Je me dis que les nombres doivent être forcément différents de zéro dans le compte est bon, je vais maintenant tester avec que des uns et un nombre à obtenir inatteignable avec ces uns.
+Malheureusement là encore j'obtiens la même erreur.
+
+Même en mettant un calcul possible, j'obtiens encore cette erreur.

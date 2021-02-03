@@ -2,15 +2,14 @@
 #include "compte.h"
 #include <limits.h>
 
-
-long resultat=0;
-long meilleurecart=0;
-int meilleurcalcul=0;
-
 int main(int argc, char *argv[])
 {
   int i;
   int params = 6;
+
+  long resultat=0;
+  long meilleurecart=0;
+  int meilleurcalcul=0;
 
   termeini=genNumbers(params);
   resultat=genRes();
@@ -30,7 +29,7 @@ int main(int argc, char *argv[])
   meilleurecart=LONG_MAX;
   meilleurcalcul=INT_MAX;
 
-	compte(params);
+	compte(params, resultat, &meilleurecart, &meilleurcalcul);
 
   affichesolution(meilleurcalcul);
 
