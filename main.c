@@ -1,5 +1,6 @@
 #include "numgen.h"
 #include "compte.h"
+#include <limits.h>
 
 
 long resultat=0;
