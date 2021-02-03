@@ -93,4 +93,6 @@ TEST(tester_calculs_intermediaires) {
 }
 ```
 
-Enfin, j'ai voulu répéter un test similaire mais en prenant des uns à la place de nombres générés aléatoirement, et je n'ai pas pu le faire puisqu'une variable globale n'est pas réinitialisée.
+J'ai trouvé que les calculs intermédiaires étaient corrects.
+
+Il est assez difficile avec des tests unitaires de tester le code, puisque la fonction la plus critique fait environ 120 lignes. Les nombreuses opérations effectuées à l'intérieur ne peuvent par conséquent pas être testées, et je n'ai ensuite accès qu'au résultat.
