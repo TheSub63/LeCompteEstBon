@@ -26,7 +26,7 @@ TEST(tester_resultats) {
     for(i=0;i<6;i++)  
         terme[6][i]=termeini[i];
     compte(6, resultat, &meilleurecart, &meilleurcalcul);
-    for(i = 0; i < 6; i++) {
+    for(i = 6; i > meilleurcalcul; i--) {
         switch(bestsolution.operation[i]) {
             case '/': 
                 CHECK(bestsolution.valeur1[i] / bestsolution.valeur2[i] == bestsolution.resultat[i]);
@@ -42,6 +42,7 @@ TEST(tester_resultats) {
                 break;
         }
     }
+    affichesolution(meilleurcalcul);
     free(termeini);
 }
 
@@ -56,7 +57,7 @@ TEST(que_des_uns) {
     for(i=0;i<6;i++)  
         terme[6][i]=termeini[i];
     compte(6, resultat, &meilleurecart, &meilleurcalcul);
-    for(i = 0; i < 6; i++) {
+    for(i = 6; i > meilleurcalcul; i--) {
         switch(bestsolution.operation[i]) {
             case '/': 
                 CHECK(bestsolution.valeur1[i] / bestsolution.valeur2[i] == bestsolution.resultat[i]);
@@ -72,7 +73,7 @@ TEST(que_des_uns) {
                 break;
         }
     }
-    affichesolution(6);
+    affichesolution(meilleurcalcul);
     free(termeini);
 }
 
