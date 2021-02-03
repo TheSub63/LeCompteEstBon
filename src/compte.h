@@ -12,6 +12,7 @@ extern int meilleurcalcul;
 
 void affichesolution(int l);
 void compte(int calcul, long resultat, long *meilleurecart, int *meilleurcalcul);
+void resetSolution();
 
 typedef struct
 {
