@@ -22,9 +22,6 @@ int main(int argc, char *argv[])
   
   for(i=0;i<params;i++)  
     terme[6][i]=termeini[i];
-  
-  for(i=0;i<params;i++)  // initialise terme[][]
-    terme[6][i]=termeini[i];
 
   meilleurecart=LONG_MAX;
   meilleurcalcul=INT_MAX;

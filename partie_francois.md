@@ -57,4 +57,40 @@ Floating point exception (core dumped)
 Je me dis que les nombres doivent être forcément différents de zéro dans le compte est bon, je vais maintenant tester avec que des uns et un nombre à obtenir inatteignable avec ces uns.
 Malheureusement là encore j'obtiens la même erreur.
 
-Même en mettant un calcul possible, j'obtiens encore cette erreur.
+Même en mettant un calcul possible, j'obtiens encore cette erreur. Il fallait initialiser des valeurs avant l'appel à la fonction.
+
+Ensuite j'ai voulu vérifier que les calculs intermédiaires pour trouver une solution étaient corrects avec des nombres aléatoires, ce qui était correct d'après mes tests.
+
+``` C
+TEST(tester_calculs_intermediaires) {
+    int i;
+    int meilleurcalcul = 0;
+    long meilleurecart = 0;
+    long resultat = 678;
+    termeini = (long *) malloc (6 * sizeof(long));
+    for(i = 0; i < 6; i++)
+        termeini[i] = genrand_int32_pos()%100;
+    for(i=0;i<6;i++)  
+        terme[6][i]=termeini[i];
+    compte(6, resultat, &meilleurecart, &meilleurcalcul);
+    for(i = 0; i < 6; i++) {
+        switch(bestsolution.operation[i]) {
+            case '/': 
+                CHECK(bestsolution.valeur1[i] / bestsolution.valeur2[i] == bestsolution.resultat[i]);
+                break;
+            case '*':
+                CHECK(bestsolution.valeur1[i] * bestsolution.valeur2[i] == bestsolution.resultat[i]);
+                break;
+            case '+':
+                CHECK(bestsolution.valeur1[i] + bestsolution.valeur2[i] == bestsolution.resultat[i]);
+                break;
+            case '-':
+                CHECK(bestsolution.valeur1[i] - bestsolution.valeur2[i] == bestsolution.resultat[i]);
+                break;
+        }
+    }
+    free(termeini);
+}
+```
+
+Enfin, j'ai voulu répéter un test similaire mais en prenant des uns à la place de nombres générés aléatoirement, et je n'ai pas pu le faire puisqu'une variable globale n'est pas réinitialisée.
