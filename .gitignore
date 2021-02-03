@@ -1,0 +1,7 @@
+leCompte
+*.log
+*.exe
+build/*
+*.o
+tests
+le_compte_est_bon
